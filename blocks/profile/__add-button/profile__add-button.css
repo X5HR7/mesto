@@ -9,6 +9,10 @@
   border-radius: 2px;
   grid-area: add-btn;
   align-self: center;
+  background-image: url(../../../images/add-btn.svg);
+  background-size: 22px;
+  background-repeat: no-repeat;
+  background-position: 64px 12px;
 }
 
 .profile__add-button:hover {
