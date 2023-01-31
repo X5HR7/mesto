@@ -3,12 +3,12 @@
   padding: 0;
   width: 32px;
   height: 32px;
-  position: absolute;
-  top: -40px;
-  left: calc(100% + 8px);
+  margin-top: -40px;
+  margin-left: calc(100% + 8px);
   background-image: url(../../../images/close-btn.svg);
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0);
   background-size: cover;
+  border: none;
 }
 
 .pop-up__button-close:hover {
@@ -20,7 +20,7 @@
   .pop-up__button-close {
     width: 20px;
     height: 20px;
-    top: -36px;
-    left: calc(100% - 20px);
+    margin-top: -36px;
+    margin-left: calc(100% - 20px);
   }
 }
