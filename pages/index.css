@@ -4,14 +4,14 @@
 @import url(../blocks/main/main.css);
 
 /* POP-UP */
-@import url(../blocks/pop-up/pop-up.css);
-@import url(../blocks/pop-up/_opened/pop-up_opened.css);
-@import url(../blocks/pop-up/__container/pop-up__container.css);
-@import url(../blocks/pop-up/__button-close/pop-up__button-close.css);
-@import url(../blocks/pop-up/__title/pop-up__title.css);
-@import url(../blocks/pop-up/__input-name/pop-up__input-name.css);
-@import url(../blocks/pop-up/__input-profession/pop-up__input-profession.css);
-@import url(../blocks/pop-up/__button-submit/pop-up__button-submit.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__button-close/popup__button-close.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input-name/popup__input-name.css);
+@import url(../blocks/popup/__input-profession/popup__input-profession.css);
+@import url(../blocks/popup/__button-submit/popup__button-submit.css);
 
 /* HEADER */
 @import url(../blocks/header/header.css);

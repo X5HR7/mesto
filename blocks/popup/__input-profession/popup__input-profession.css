@@ -1,4 +1,4 @@
-.pop-up__input-profession {
+.popup__input-profession {
   margin: 0 auto;
   margin-bottom: 48px;
   padding: 0;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 560px) {
-  .pop-up__input-profession {
+  .popup__input-profession {
     width: 238px;
     margin-bottom: 45px;
     font-size: 14px;
