@@ -1,6 +1,5 @@
 .element__button-like {
-  margin: 0;
-  margin-right: 20px;
+  margin: 0 20px 0 auto;
   margin-left: auto;
   padding: 0;
   width: 22px;
@@ -8,11 +7,12 @@
   grid-area: button;
   background-image: url(../../../images/like-btn_color_white.svg);
   background-size: cover;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
   align-self: center;
 }
 
 .element__button-like:hover {
   cursor: pointer;
+  opacity: .5;
 }

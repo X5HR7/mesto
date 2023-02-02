@@ -2,8 +2,6 @@
   margin: 0;
   padding: 0;
   width: 430px;
-  margin-top: calc((100% - 330px)/2);
-  margin-left: calc((100% - 430px)/2);
   background-color: #fff;
   border-radius: 10px;
   display: flex;
@@ -13,7 +11,5 @@
 @media screen and (max-width: 560px) {
   .popup__container {
     width: 282px;
-    margin-top: 50%;
-    margin-left: calc((100% - 282px)/2);
   }
 }

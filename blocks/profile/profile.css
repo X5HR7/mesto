@@ -1,6 +1,5 @@
 .profile {
-  margin: 0 auto;
-  margin-bottom: 50px;
+  margin: 0 auto 50px auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, max-content) auto;
@@ -12,8 +11,7 @@
 @media screen and (max-width: 650px) {
   .profile {
     max-width: max-content;
-    margin: 0 auto;
-    margin-bottom: 36px;
+    margin: 0 auto 36px auto;
     grid-template-columns: 1fr max-content 1fr;
     grid-template-rows: repeat(3, max-content);
     grid-template-areas: 
