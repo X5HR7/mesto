@@ -32,6 +32,9 @@ const initialCards = [
   }
 ];
 
+const popupShowImage = document.querySelector('.popup_type_image');
+const popupImage = popupShowImage.querySelector('.popup__image');
+const popupCaption = popupShowImage.querySelector('.popup__caption');
 
 function addCard(imgSrc, imgTitle) {
   const cardTemplate = document.querySelector('#card').content;
@@ -53,6 +56,13 @@ function addCard(imgSrc, imgTitle) {
   const btnRemove = card.querySelector('.element__button-remove');
   btnRemove.addEventListener('click', (evt) => {
     removeCard(evt);
+  })
+
+  image.addEventListener('click', () => {
+    openPopUp(popupShowImage);
+    popupImage.src = imgSrc;
+    popupImage.alt = imgTitle;
+    popupCaption.textContent = imgTitle;
   })
 }
 
@@ -143,5 +153,12 @@ addFormElement.addEventListener('submit', (evt) => {
   createNewCard();
   clearFormFields(addFormElement);
 });
+
+
+//
+const btnClosePopUpShowImage = popupShowImage.querySelector('.popup__button-close');
+btnClosePopUpShowImage.addEventListener('click', () => {
+  closePopUp(popupShowImage);
+})
 
 createInitialCards()
