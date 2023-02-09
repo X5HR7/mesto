@@ -45,10 +45,15 @@ function addCard(imgSrc, imgTitle) {
 
   cards.prepend(card);
 
-  const btnLike = document.querySelector('.element__button-like');
+  const btnLike = card.querySelector('.element__button-like');
   btnLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__button-like_active');
   });
+
+  const btnRemove = card.querySelector('.element__button-remove');
+  btnRemove.addEventListener('click', (evt) => {
+    removeCard(evt);
+  })
 }
 
 function createInitialCards() {
@@ -68,6 +73,7 @@ function closePopUp(popup) {
   popup.classList.remove('popup_opened');
 }
 
+
 function saveProfileChanges() {
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
@@ -85,6 +91,11 @@ function createNewCard() {
   addCard(imageUrl, imageTitle);
 }
 
+function removeCard(evt) {
+  const card = evt.target.closest('.element');
+  card.remove();
+}
+
 function clearFormFields(form) {
   fields = form.querySelectorAll('.popup__input');
   fields.forEach(inputElement => {
@@ -92,7 +103,7 @@ function clearFormFields(form) {
   })
 }
 
-//Обрабтчики popUpEditProfile
+//Обработчики popUpEditProfile
 const popUpEditProfile = document.querySelector('.popup_type_edit-profile');
 
 const btnOpenPopUpEditProfile = document.querySelector('.profile__edit-button');

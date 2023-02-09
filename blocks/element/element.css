@@ -1,6 +1,7 @@
 .element {
   margin: 0;
   padding: 0;
+  position: relative;
   width: 100%;
   border-radius: 10px;
   background-color: #fff;
@@ -10,4 +11,5 @@
   "photo photo"
   "title button";
   gap: 0 30px;
+  z-index: 0;
 }
