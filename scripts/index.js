@@ -48,18 +48,16 @@ function addCard(imgSrc, imgTitle) {
 
   cards.prepend(card);
 
-  const btnLike = card.querySelector('.element__button-like');
-  btnLike.addEventListener('click', (evt) => {
+  const likeCardBtn = card.querySelector('.element__button-like');
+  likeCardBtn.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__button-like_active');
   });
 
-  const btnRemove = card.querySelector('.element__button-remove');
-  btnRemove.addEventListener('click', (evt) => {
-    removeCard(evt);
-  })
+  const removeCardBtn = card.querySelector('.element__button-remove');
+  removeCardBtn.addEventListener('click', removeCard);
 
   image.addEventListener('click', () => {
-    openPopUp(popupShowImage);
+    openPopup(popupShowImage);
     popupImage.src = imgSrc;
     popupImage.alt = imgTitle;
     popupCaption.textContent = imgTitle;
@@ -73,13 +71,13 @@ function createInitialCards() {
 }
 
 
-function openPopUp(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
-function closePopUp(popup) {
+function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
@@ -91,7 +89,7 @@ function saveProfileChanges() {
 
 function handleFormSubmit(evt, popup) {
   evt.preventDefault();
-  closePopUp(popup);
+  closePopup(popup);
 }
 
 function createNewCard() {
@@ -113,52 +111,52 @@ function clearFormFields(form) {
   })
 }
 
-//Обработчики popUpEditProfile
-const popUpEditProfile = document.querySelector('.popup_type_edit-profile');
+//popupEditProfile
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 
-const btnOpenPopUpEditProfile = document.querySelector('.profile__edit-button');
-btnOpenPopUpEditProfile.addEventListener('click', () => {
-  openPopUp(popUpEditProfile);
+const btnOpenPopupEditProfile = document.querySelector('.profile__edit-button');
+btnOpenPopupEditProfile.addEventListener('click', () => {
+  openPopup(popupEditProfile);
 });
 
-const btnClosePopUpEditProfile = popUpEditProfile.querySelector('.popup__button-close');
-btnClosePopUpEditProfile.addEventListener('click', () => {
-  closePopUp(popUpEditProfile);
+const btnClosePopupEditProfile = popupEditProfile.querySelector('.popup__button-close');
+btnClosePopupEditProfile.addEventListener('click', () => {
+  closePopup(popupEditProfile);
 });
 
-const editFormElement = popUpEditProfile.querySelector('.popup__form_type_edit-profile');
+const editFormElement = popupEditProfile.querySelector('.popup__form_type_edit-profile');
 editFormElement.addEventListener('submit', (evt) => {
-  handleFormSubmit(evt, popUpEditProfile);
+  handleFormSubmit(evt, popupEditProfile);
   saveProfileChanges();
 });
 
 
-//Обработчики popUpAddCard
-const popUpAddCard = document.querySelector('.popup_type_add-card');
+//popupAddCard
+const popupAddCard = document.querySelector('.popup_type_add-card');
 
-const btnOpenPopUpAddCard = document.querySelector('.profile__add-button');
-btnOpenPopUpAddCard.addEventListener('click', () => {
-  openPopUp(popUpAddCard);
+const btnOpenPopupAddCard = document.querySelector('.profile__add-button');
+btnOpenPopupAddCard.addEventListener('click', () => {
+  openPopup(popupAddCard);
 })
 
-const btnClosePopUpAddCard = popUpAddCard.querySelector('.popup__button-close');
-btnClosePopUpAddCard.addEventListener('click', () => {
+const btnClosePopupAddCard = popupAddCard.querySelector('.popup__button-close');
+btnClosePopupAddCard.addEventListener('click', () => {
   clearFormFields(addFormElement);
-  closePopUp(popUpAddCard);
+  closePopup(popupAddCard);
 })
 
-const addFormElement = popUpAddCard.querySelector('.popup__form_type_add-card');
+const addFormElement = popupAddCard.querySelector('.popup__form_type_add-card');
 addFormElement.addEventListener('submit', (evt) => {
-  handleFormSubmit(evt, popUpAddCard);
+  handleFormSubmit(evt, popupAddCard);
   createNewCard();
   clearFormFields(addFormElement);
 });
 
 
-//
-const btnClosePopUpShowImage = popupShowImage.querySelector('.popup__button-close');
-btnClosePopUpShowImage.addEventListener('click', () => {
-  closePopUp(popupShowImage);
+//popupShowImage
+const btnClosePopupShowImage = popupShowImage.querySelector('.popup__button-close');
+btnClosePopupShowImage.addEventListener('click', () => {
+  closePopup(popupShowImage);
 })
 
 createInitialCards()
