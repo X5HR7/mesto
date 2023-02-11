@@ -3,41 +3,35 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const profileJob = document.querySelector('.profile__profession');
 const jobInput = document.querySelector('.popup__input_type_profession');
 
-const cards = document.querySelector('.elements');
+//popupEditProfile
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+const btnOpenPopupEditProfile = document.querySelector('.profile__edit-button');
+const btnClosePopupEditProfile = popupEditProfile.querySelector('.popup__button-close');
+const editFormElement = popupEditProfile.querySelector('.popup__form_type_edit-profile');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+//popupAddCard
+const popupAddCard = document.querySelector('.popup_type_add-card');
+const btnOpenPopupAddCard = document.querySelector('.profile__add-button');
+const btnClosePopupAddCard = popupAddCard.querySelector('.popup__button-close');
+const addFormElement = popupAddCard.querySelector('.popup__form_type_add-card');
 
+//popupShowImage
 const popupShowImage = document.querySelector('.popup_type_image');
 const popupImage = popupShowImage.querySelector('.popup__image');
 const popupCaption = popupShowImage.querySelector('.popup__caption');
+const btnClosePopupShowImage = popupShowImage.querySelector('.popup__button-close');
 
-function addCard(imgSrc, imgTitle) {
-  const cardTemplate = document.querySelector('#card').content;
+const cardTemplate = document.querySelector('#card').content;
+const cards = document.querySelector('.elements');
+const imageTitle = addFormElement.querySelector('.popup__input_type_place-title');
+const imageUrl = addFormElement.querySelector('.popup__input_type_image-src');
+
+
+function addCard(card) {
+  cards.prepend(card);
+}
+
+function createNewCard(imgSrc, imgTitle) {
   const card = cardTemplate.querySelector('.element').cloneNode(true);
   const image = card.querySelector('.element__photo');
   const title = card.querySelector('.element__title');
@@ -45,8 +39,6 @@ function addCard(imgSrc, imgTitle) {
   image.src = imgSrc;
   image.alt = imgTitle;
   title.textContent = imgTitle;
-
-  cards.prepend(card);
 
   const likeCardBtn = card.querySelector('.element__button-like');
   likeCardBtn.addEventListener('click', (evt) => {
@@ -62,25 +54,29 @@ function addCard(imgSrc, imgTitle) {
     popupImage.alt = imgTitle;
     popupCaption.textContent = imgTitle;
   })
+
+  return card;
 }
 
 function createInitialCards() {
   initialCards.forEach(item => {
-    addCard(item.link, item.name);
+    addCard(createNewCard(item.link, item.name));
   });
 }
 
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+function openProfileEditPopup(popup) {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+  openPopup(popup);
+}
 
 function saveProfileChanges() {
   profileName.textContent = nameInput.value;
@@ -92,71 +88,47 @@ function handleFormSubmit(evt, popup) {
   closePopup(popup);
 }
 
-function createNewCard() {
-  const imageTitle = addFormElement.querySelector('.popup__input_type_place-title').value;
-  const imageUrl = addFormElement.querySelector('.popup__input_type_image-src').value;
-
-  addCard(imageUrl, imageTitle);
-}
-
 function removeCard(evt) {
   const card = evt.target.closest('.element');
   card.remove();
 }
 
 function clearFormFields(form) {
-  fields = form.querySelectorAll('.popup__input');
-  fields.forEach(inputElement => {
-    inputElement.value = '';
-  })
+  form.reset();
 }
 
-//popupEditProfile
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
+createInitialCards()
 
-const btnOpenPopupEditProfile = document.querySelector('.profile__edit-button');
 btnOpenPopupEditProfile.addEventListener('click', () => {
-  openPopup(popupEditProfile);
+  openProfileEditPopup(popupEditProfile);
 });
 
-const btnClosePopupEditProfile = popupEditProfile.querySelector('.popup__button-close');
 btnClosePopupEditProfile.addEventListener('click', () => {
   closePopup(popupEditProfile);
 });
 
-const editFormElement = popupEditProfile.querySelector('.popup__form_type_edit-profile');
 editFormElement.addEventListener('submit', (evt) => {
   handleFormSubmit(evt, popupEditProfile);
   saveProfileChanges();
 });
 
 
-//popupAddCard
-const popupAddCard = document.querySelector('.popup_type_add-card');
-
-const btnOpenPopupAddCard = document.querySelector('.profile__add-button');
 btnOpenPopupAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 })
 
-const btnClosePopupAddCard = popupAddCard.querySelector('.popup__button-close');
 btnClosePopupAddCard.addEventListener('click', () => {
   clearFormFields(addFormElement);
   closePopup(popupAddCard);
 })
 
-const addFormElement = popupAddCard.querySelector('.popup__form_type_add-card');
 addFormElement.addEventListener('submit', (evt) => {
   handleFormSubmit(evt, popupAddCard);
-  createNewCard();
+  addCard(createNewCard(imageUrl.value, imageTitle.value));
   clearFormFields(addFormElement);
 });
 
 
-//popupShowImage
-const btnClosePopupShowImage = popupShowImage.querySelector('.popup__button-close');
 btnClosePopupShowImage.addEventListener('click', () => {
   closePopup(popupShowImage);
 })
-
-createInitialCards()
