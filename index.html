@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
+  <script defer src="scripts/constants.js"></script>
+  <script defer src="scripts/index.js"></script>
+  <script defer src="scripts/validation.js"></script>
   <title>Mesto</title>
 </head>
 <body class="root">
@@ -15,7 +18,7 @@
       <form name="popup-form-profile" class="popup__form popup__form_type_edit-profile" novalidate>
         <input type="text" class="popup__input popup__input_type_name" id="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
         <p class="popup__error name-input-error"></p>
-        <input type="text" class="popup__input popup__input_type_profession" id="profession-input" placeholder="Профессия" minlength="2" maxlength="400" required>
+        <input type="text" class="popup__input popup__input_type_profession" id="profession-input" placeholder="Профессия" minlength="2" maxlength="200" required>
         <p class="popup__error profession-input-error"></p>
         <button class="popup__button-submit" type="submit">Сохранить</button>
       </form>
@@ -76,9 +79,5 @@
       <button class="element__button-like" type="button"></button>
     </article>
   </template>
-
-  <script src="scripts/constants.js"></script>
-  <script src="scripts/index.js"></script>
-  <script src="scripts/validation.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 .popup__error {
   margin: 5px auto 0 auto;
   padding: 0;
+  display: block;
   width: 358px;
   font-style: normal;
   font-weight: 400;
@@ -8,15 +9,7 @@
   line-height: 15px;
   color: #F00;
   text-align: left;
-  min-height: 14px;
-}
-
-.popup__error:first-of-type {
-  margin-bottom: 18px;
-}
-
-.popup__error:last-of-type {
-  margin-bottom: 36px;
+  min-height: 30px;
 }
 
 @media screen and (max-width: 560px) {
@@ -24,6 +17,6 @@
     width: 238px;
   }
   .popup__error:last-of-type {
-    margin-bottom: 26px;
+    margin-bottom: 10px;
   }
 }
