@@ -1,12 +1,3 @@
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  inactiveButtonClass: 'popup__button-submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}
-
 const hasInvalidInput = inputList => {
   return inputList.some(inputElement => {
     return !inputElement.validity.valid;
@@ -31,14 +22,22 @@ const hideInputError = (formElement, inputElement, popupErrorSelector, popupInpu
   inputElement.classList.remove(popupInputErrorSelector);
 }
 
+const disableButton = (buttonElement, popupButtonDisabledSelector) => {
+  buttonElement.classList.add(popupButtonDisabledSelector);
+  buttonElement.setAttribute('disabled', true);
+}
+
+const enableButton = (buttonElement, popupButtonDisabledSelector) => {
+  buttonElement.classList.remove(popupButtonDisabledSelector);
+  buttonElement.removeAttribute('disabled');
+}
+
 const toggleButtonState = (inputList, buttonElement, popupButtonDisabledSelector) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(popupButtonDisabledSelector);
-    buttonElement.setAttribute('disabled', true);
+    disableButton(buttonElement, popupButtonDisabledSelector)
   }
   else {
-    buttonElement.classList.remove(popupButtonDisabledSelector);
-    buttonElement.removeAttribute('disabled');
+    enableButton(buttonElement, popupButtonDisabledSelector)
   }
 }
 
@@ -65,14 +64,11 @@ const setEventListeners = (formElement, popupInputSelector, popupButtonSelector,
   });
 }
 
-const enableValidation = (selectors) => {
-  const formList = Array.from(document.querySelectorAll(selectors.formSelector));
+const enableValidation = (validationSettings) => {
+  const formList = Array.from(document.querySelectorAll(validationSettings.formSelector));
 
   formList.forEach(formElement => {
-    formElement.addEventListener('submit', evt => {
-      evt.preventDefault;
-    });
-    setEventListeners(formElement, selectors.inputSelector, selectors.submitButtonSelector, selectors.inactiveButtonClass, selectors.errorClass, selectors.inputErrorClass);
+    setEventListeners(formElement, validationSettings.inputSelector, validationSettings.submitButtonSelector, validationSettings.inactiveButtonClass, validationSettings.errorClass, validationSettings.inputErrorClass);
   });
 }
 
