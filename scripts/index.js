@@ -74,7 +74,6 @@ function initPopupOnEsc(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-
   window.addEventListener('keyup', initPopupOnEsc);
 }
 
