@@ -5,9 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="pages/index.css">
-  <script defer src="scripts/constants.js"></script>
-  <script defer src="scripts/index.js"></script>
-  <script defer src="scripts/validation.js"></script>
   <title>Mesto</title>
 </head>
 <body class="root">
@@ -70,7 +67,6 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-
   <template id="card">
     <article class="element">
       <button class="element__button-remove" type="button"></button>
@@ -79,5 +75,11 @@
       <button class="element__button-like" type="button"></button>
     </article>
   </template>
+
+  <script defer type="module" src="scripts/constants.js"></script>
+  <script defer type="module" src="scripts/Card.js"></script>
+  <script defer type="module" src="scripts/FormValidator.js"></script>
+  <script defer type="module" src="scripts/index.js"></script>
+  <script defer type="module" src="scripts/util.js"></script>
 </body>
 </html>
